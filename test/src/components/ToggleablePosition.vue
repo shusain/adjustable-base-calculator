@@ -2,9 +2,15 @@
   <div class="box" :class="{'isOn':isOn}">
     <var>{{base}}<sup>{{exponent}}</sup> = {{Math.pow(base,exponent)}}</var>
     <br>
-    Hex: {{hexit}}
-    <br>
-    Binary: {{binary}}
+    <div class="row">
+      Binary: <var>{{binary}}<sub>2</sub></var>
+    </div>
+    <div class="row">
+      Hex: <var>{{hexit}}<sub>16</sub></var>
+    </div>
+    <div class="row">
+      Octal: <var>{{octal}}<sub>8</sub></var>
+    </div>
   </div>
 </template>
 
@@ -14,6 +20,9 @@ export default {
   name: 'ToggleablePosition',
   props: ["isOn", "base", "exponent"],
   computed: {
+    octal() {
+        return Math.pow(this.base,this.exponent).toString(8)
+    },
     hexit() {
         return Math.pow(this.base,this.exponent).toString(16)
     },

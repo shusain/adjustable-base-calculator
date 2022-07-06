@@ -10,9 +10,17 @@
       @click="position.isOn=!position.isOn">
     </ToggleablePosition>
   </div>
-  Total: {{total}}<br/>
-  Hex: {{hexit}}<br/>
-  Binary: {{binary}}
+  <br/>
+  Total (Decimal): {{total}}<br/>
+  <div class="row">
+    Binary: <var>{{binary}}<sub>2</sub></var>
+  </div>
+  <div class="row">
+    Hex: <var>{{hexit}}<sub>16</sub></var>
+  </div>
+  <div class="row">
+    Octal: <var>{{octal}}<sub>8</sub></var>
+  </div>
 </template>
 
 <script>
@@ -35,6 +43,9 @@ export default {
         retTotal += Math.pow(this.base, position.exponent);
       })
       return retTotal
+    },
+    octal() {
+        return this.total.toString(8)
     },
     hexit() {
         return this.total.toString(16)
@@ -60,7 +71,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
@@ -70,5 +80,13 @@ export default {
 }
 input {
   margin-bottom: 1rem;
+}
+.row {
+  display: flex;
+  flex-grow: 0;
+  flex-direction: row;
+}
+var {
+  font-style: bold;
 }
 </style>

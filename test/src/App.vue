@@ -21,6 +21,11 @@
   <div class="row">
     Octal: <var>{{octal}}<sub>8</sub></var>
   </div>
+  <hr/>
+  Decimal to binary<br/>
+
+  <input type="number" v-model="decimalInput"/>
+  {{decToBinary}}
 </template>
 
 <script>
@@ -32,7 +37,8 @@ export default {
   data() {
     return {
       base: 2,
-      positions: []
+      positions: [],
+      decimalInput: 0
     }
   },
   computed: {
@@ -52,6 +58,9 @@ export default {
     },
     binary() {
         return this.total.toString(2)
+    },
+    decToBinary() {
+        return this.decimalInput.toString(2).padStart(8, '0')
     }
   },
   created() {

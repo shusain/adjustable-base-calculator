@@ -24,8 +24,9 @@
   <hr/>
   Decimal to binary<br/>
 
-  <input type="number" v-model="decimalInput"/>
-  {{decToBinary}}
+  <input type="number" v-model="decimalInput"/><br>
+  Binary: {{decToBinary}}<br>
+  Hexadecimal: {{decToHex}}
 </template>
 
 <script>
@@ -61,6 +62,9 @@ export default {
     },
     decToBinary() {
         return this.decimalInput.toString(2).padStart(8, '0')
+    },
+    decToHex() {
+        return this.decimalInput.toString(16)
     }
   },
   created() {
